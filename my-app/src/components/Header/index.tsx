@@ -4,6 +4,7 @@ import type { MenuProps } from 'antd';
 import { Dropdown, Space } from 'antd';
 import { clearToken } from '../../store/login/authSlice';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const items: MenuProps['items'] = [
     {
@@ -28,9 +29,11 @@ const items: MenuProps['items'] = [
 
 function MyHeader(){
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const onClick:MenuProps['onClick']=({key})=>{
         if(key=="1"){
             //跳转到个人中心
+            navigate('/personal')
         }else{
             //退出登录
             dispatch(clearToken());
